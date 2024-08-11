@@ -1,7 +1,9 @@
 <?php
-require_once '../database.php';
+//require_once '../database.php';
 include "../validation/validation.php";
-$db1=new Database();
+require_once '../sqldata/user.php';
+
+$db1 = new User();
 $conn=$db1->connect();
 $sql_table2 = "SELECT * FROM contact";
 $result_table2 = $conn->query($sql_table2);
@@ -41,6 +43,7 @@ $result_table2 = $conn->query($sql_table2);
         <tr class="th2">
             <th>Id</th>
             <th>name</th>
+            <th>email</th>
             <th>message</th>
         </tr>
         <?php
@@ -50,6 +53,7 @@ $result_table2 = $conn->query($sql_table2);
                 echo "<tr class='th3'>";
                 echo "<td>" .$i. "</td>";
                 echo "<td>" . $row["con_username"] . "</td>";
+                echo "<td>" . $row["con_email"] . "</td>";
                 echo "<td>" . $row["con_message"] . "</td>";
                 echo "</tr>";
                 $i++;

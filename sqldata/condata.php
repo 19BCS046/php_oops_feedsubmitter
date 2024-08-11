@@ -1,13 +1,14 @@
 <?php
-require_once '../database.php';
-class Contact{
+require_once 'AbstractDatabase.php';
+
+class Contact extends AbstractDatabase{
 private $conn2;
 private $con_name;
 private $con_email;
 private $con_message;
 
-function __construct($db1_connect) {
-    $this->conn2 = $db1_connect;
+function __construct() {
+    $this->conn2 = $this->connect();
 }
 function insert($con_name, $con_email, $con_message) {
     try {

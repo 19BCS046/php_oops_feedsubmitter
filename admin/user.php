@@ -1,16 +1,12 @@
 <?php
-require_once '../database.php';
+// require_once '../database.php';
 include "../validation/validation.php";
+require_once '../sqldata/user.php';
 
-$db1 = new Database();
+$db1 = new User();
 $conn = $db1->connect();
 $sql_table1 = "SELECT * FROM users";
-// $sql_table2 = "SELECT * FROM contact";
-// $sql_table3 = "SELECT * FROM feedbacks";
-
 $result_table1 = $conn->query($sql_table1);
-// $result_table2 = $conn->query($sql_table2);
-// $result_table3 = $conn->query($sql_table3);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -43,11 +39,15 @@ $result_table1 = $conn->query($sql_table1);
             <div class="title1">
                 <h1 class="th1">User Profiles</h1>
                 <table id="example" class="table table-striped table-bordered" style="width:100%">
-                    <?php if (isset($_GET['error'])) { ?>
-                        <p class="err1"><?= Validation::clean($_GET['error']) ?></p>
+                    <?php if (isset($_GET['error'])) { 
+                          $validation=new Validation();
+                        ?>
+                        <p class="err1"><?= $validation->clean($_GET['error']) ?></p>
                     <?php } ?>
-                    <?php if (isset($_GET['success'])) { ?>
-                        <p class="err2"><?= Validation::clean($_GET['success']) ?></p>
+                    <?php 
+                          $validation=new Validation();
+                    if (isset($_GET['success'])) { ?>
+                        <p class="err2"><?= $validation->clean($_GET['success']) ?></p>
                     <?php } ?>
                     <tr class="th2">
                         <th>Id</th>
@@ -55,6 +55,7 @@ $result_table1 = $conn->query($sql_table1);
                         <th>Email</th>
                         <th>Phone Number</th>
                         <th>Gender</th>
+                        <th>Role</th>
                         <th>Delete</th>
                     </tr>
                     <?php
@@ -67,6 +68,8 @@ $result_table1 = $conn->query($sql_table1);
                             echo "<td>" . $row["user_email"] . "</td>";
                             echo "<td>" . $row["user_phonenumber"] . "</td>";
                             echo "<td>" . $row["user_gender"] . "</td>";
+                            echo "<td>" . $row["admin"] . "</td>";
+
                             echo "<td class='del'>
                                   <a href='../action/delete.php?table=users&id=" . $row["user_id"] . "'>Delete</a>                                  </td>";
                             echo "</tr>";

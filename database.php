@@ -14,7 +14,6 @@ class Database {
                 return false;
             }
             
-          //  echo "Connected successfully to MySQL." . "<br>";
             return $conn;
         } catch (Exception $e) {
             echo "Could not connect: " . $e->getMessage() . "<br>";

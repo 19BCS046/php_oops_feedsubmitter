@@ -18,6 +18,8 @@ include "./validation/validation.php";
          </div>
          <?php 
          $validation=new Validation();
+   
+         //It gives success and error messages
         if(isset($_GET['error'])){ ?>
           <p class="error"> <?=$validation->clean($_GET['error'])?></p>
           <?php  } ?>
@@ -51,8 +53,5 @@ include "./validation/validation.php";
             </div>
          </form>
  </section>
-  <!-- <script> 
-  console.log("hoooo");
-</script> -->
 </body>
 </html>

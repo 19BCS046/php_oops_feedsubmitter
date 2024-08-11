@@ -1,10 +1,12 @@
 <?php
-include "../validation/Errors.php";
 include "../validation/validation.php";
-require_once '../database.php';
 include "../sqldata/condata.php";
+require_once '../sqldata/user.php';
+
+//Objects for Validating
 $validation=new Validation();
 $error=new ErrorHandler();
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($_POST["con_name"])&&empty($_POST["con_email"])&&empty($_POST["con_message"])){
         $err="Please fill out Details";
@@ -14,10 +16,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
     $email=$error->clean($_POST["con_email"]);
     $message=$error->clean($_POST["con_message"]);
     $data="fname=".$fullname."email=".$email;
-    // echo"$fullname"."<br>";
-    // echo"$email"."<br>";
-    // echo"$message"."<br>";
-
+   
     if(!$error->name($fullname)) {
         $err="Please Enter your name";
         $error->redirect("../contact.php","error",$err);
@@ -32,8 +31,8 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
                 $error->redirect("../contact.php","error",$err);
                 }
                 else{
-                    // con_username	con_email	con_message	con_useridc	
-                    $db1=new Database();
+                    //databases connection
+                    $db1=new User();
                     $conn1=$db1->connect();
                     $contact=new Contact($conn1);
                     $result=$contact->insert($fullname,$email,$message);

@@ -1,9 +1,11 @@
-
+<!-- Unneccesary file -->
 <?php
 include "../validation/Errors.php";
 include "../validation/validation.php";
-require_once '../database.php';
+//require_once '../database.php';
 include "../sqldata/admindata.php";
+require_once '../sqldata/user.php';
+
 if($_SERVER["REQUEST_METHOD"]=="POST"){
     if(empty($_POST["username"])&&empty($_POST["password"])){
         $err="Please fill out Details";
@@ -24,7 +26,7 @@ if($_SERVER["REQUEST_METHOD"]=="POST"){
             Errors::redirect("../admin.php","error",$err);
             }
                 else{
-                    $db1=new Database();
+                    $db1=new User();
                     $conn1=$db1->connect();
                     $admin=new Admin($conn1);
                     $auth=$admin->auth($username,$password);

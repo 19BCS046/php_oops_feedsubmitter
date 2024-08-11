@@ -35,8 +35,5 @@ include "./validation/validation.php";
             </div>
          </form>
  </section>
-  <!-- <script> 
-  console.log("hoooo");
-</script> -->
 </body>
 </html>

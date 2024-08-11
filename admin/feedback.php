@@ -1,7 +1,9 @@
 <?php
-require_once '../database.php';
+// require_once '../database.php';
 include "../validation/validation.php";
-$db1=new Database();
+require_once '../sqldata/user.php';
+
+$db1 = new User();
 $conn=$db1->connect();
 $sql_table3 = "SELECT * FROM feedbacks";
 $result_table3 = $conn->query($sql_table3);

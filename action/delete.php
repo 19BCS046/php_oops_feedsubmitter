@@ -1,5 +1,5 @@
 <?php
-include "../validation/Errors.php";
+include "../validation/Errors.php"; 
 include "../validation/validation.php";
 require_once '../database.php';
 
