@@ -18,7 +18,7 @@ abstract class AbstractDatabase {
             return false;
         }
     }
-    abstract protected function getDatabaseName(): string;
+    //abstract protected function getDatabaseName(): string;
 
 }
 ?>
