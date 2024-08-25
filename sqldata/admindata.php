@@ -1,4 +1,5 @@
 <?php
+// Unneccesary file
 require_once '../database.php';
 
 class Admin {

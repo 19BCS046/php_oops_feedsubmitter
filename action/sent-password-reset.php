@@ -20,7 +20,7 @@ function sent_password_reset($get_name, $get_email, $token) {
         $mail->Host = 'smtp.gmail.com'; // Set the SMTP server to send through
         $mail->SMTPAuth = true; // Enable SMTP authentication
         $mail->Username = 'perumalshanmugam2002@gmail.com'; // SMTP username
-        $mail->Password = 'uoeojckedywgrhmv'; // SMTP password
+        $mail->Password = 'lpdmmbfhuytnqmxw'; // SMTP password
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS; // Enable implicit TLS encryption
         $mail->Port = 465; // TCP port to connect to
 
